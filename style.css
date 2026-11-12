@@ -37,3 +37,221 @@
 .video-card{overflow:hidden}
 .video-card video{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:800px){.showcase-card.hero-media{width:92%;height:330px}.video-card video{object-fit:cover}}
+
+
+/* =========================================================
+   RESPONSIVE LAYOUT FIX — PHONE + LAPTOP
+   ========================================================= */
+
+/* HERO: use a real two-column layout instead of an absolutely
+   positioned visual, so text and product image never overlap. */
+.hero{
+    min-height:100svh;
+    padding:110px 8% 80px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(360px,1fr);
+    align-items:center;
+    column-gap:clamp(32px,6vw,100px);
+    overflow:hidden;
+}
+
+.hero .copy{
+    width:100%;
+    max-width:600px;
+    min-width:0;
+}
+
+.hero .visual.heroProduct{
+    position:relative;
+    right:auto;
+    top:auto;
+    width:100%;
+    height:auto;
+    min-height:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero .halo{
+    width:min(70vw,620px);
+    height:min(70vw,620px);
+    max-width:620px;
+    max-height:620px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.hero .showcase-card.hero-media{
+    width:min(100%,620px);
+    height:auto;
+    aspect-ratio:16 / 10;
+    margin:0;
+    position:relative;
+}
+
+.hero .showcase-card.hero-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:inherit;
+}
+
+/* Keep scroll text centered at the bottom. */
+.hero .scroll{
+    left:50%;
+    transform:translateX(-50%);
+    white-space:nowrap;
+}
+
+/* FEATURE SECTIONS: controlled two-column layout */
+.feature{
+    min-height:88vh;
+    padding:100px 8%;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(320px,1fr);
+    align-items:center;
+    gap:clamp(36px,7vw,110px);
+}
+
+.feature .copy{
+    width:100%;
+    max-width:600px;
+    min-width:0;
+}
+
+.chargerWrap,
+.cableVisual{
+    width:100%;
+    height:auto;
+    min-height:440px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.chargerWrap .showcase-card,
+.cableVisual .showcase-card{
+    width:min(100%,520px);
+    height:auto;
+    aspect-ratio:16 / 10;
+}
+
+.video-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+@media(max-width:800px){
+
+    header{
+        padding:0 28px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .brand{
+        font-size:12px;
+        letter-spacing:1.2px;
+    }
+
+    .hero{
+        min-height:auto;
+        padding:105px 24px 70px;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:38px;
+    }
+
+    .hero .copy{
+        max-width:none;
+    }
+
+    .hero h1{
+        font-size:clamp(48px,15vw,72px);
+        line-height:.95;
+        margin-top:10px;
+    }
+
+    .hero .visual.heroProduct{
+        position:relative !important;
+        inset:auto !important;
+        width:100%;
+        min-height:0;
+        transform:none !important;
+        justify-content:center;
+    }
+
+    .hero .showcase-card.hero-media{
+        width:100%;
+        max-width:560px;
+        aspect-ratio:16 / 10;
+        height:auto !important;
+        transform:none !important;
+    }
+
+    .hero .halo{
+        width:110vw;
+        height:110vw;
+    }
+
+    .hero .scroll{
+        position:relative;
+        bottom:auto;
+        left:auto;
+        transform:none;
+        display:block;
+        text-align:center;
+        margin-top:4px;
+    }
+
+    .feature{
+        min-height:auto;
+        padding:80px 24px;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:38px;
+    }
+
+    .feature .copy{
+        max-width:none;
+    }
+
+    .feature h2{
+        font-size:clamp(46px,14vw,70px);
+    }
+
+    .chargerWrap,
+    .cableVisual{
+        width:100%;
+        min-height:0;
+        height:auto;
+    }
+
+    .chargerWrap .showcase-card,
+    .cableVisual .showcase-card{
+        width:100%;
+        max-width:560px;
+        height:auto !important;
+        aspect-ratio:16 / 10;
+        transform:none;
+    }
+
+    /* Put the text first in the light section on phones */
+    .feature.light .copy{
+        order:1;
+    }
+
+    .feature.light .cableVisual{
+        order:2;
+    }
+}
